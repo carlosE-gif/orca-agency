@@ -35,47 +35,28 @@ export default function AboutSection({ content }: Props) {
 
       <section
         id="about"
-        className="section-pad two-col-grid"
         style={{
-          position: 'relative',
-          overflow: 'hidden',
+          padding: '160px 60px',
           borderTop: '1px solid rgba(245,244,240,0.08)',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '80px',
+          alignItems: 'center',
         }}
       >
         {/* Left column */}
         <div>
-          <p style={{
-            fontFamily: 'var(--font-dm-sans)',
-            fontSize: '0.65rem',
-            letterSpacing: '0.35em',
-            textTransform: 'uppercase',
-            color: '#4569AD',
-            marginBottom: 24,
-          }}>
+          <p style={{ fontFamily: 'var(--font-dm-sans)', fontSize: '0.65rem', letterSpacing: '0.35em', textTransform: 'uppercase', color: '#4569AD', marginBottom: 24 }}>
             {content.subheading}
           </p>
 
-          <h2 style={{
-            fontFamily: 'var(--font-cormorant)',
-            fontSize: 'clamp(40px, 5vw, 72px)',
-            fontWeight: 300,
-            lineHeight: 1.1,
-            color: '#F5F4F0',
-            margin: '0 0 32px',
-          }}>
+          <h2 style={{ fontFamily: 'var(--font-cormorant)', fontSize: 'clamp(40px, 5vw, 72px)', fontWeight: 300, lineHeight: 1.1, color: '#F5F4F0', margin: '0 0 32px' }}>
             {content.heading_line1}
             <br />
             <em style={{ color: '#4569AD', fontStyle: 'italic' }}>{content.heading_line2}</em>
           </h2>
 
-          <p style={{
-            fontFamily: 'var(--font-dm-sans)',
-            fontSize: '0.9rem',
-            lineHeight: 1.8,
-            color: 'rgba(245,244,240,0.55)',
-            marginBottom: 48,
-            maxWidth: 480,
-          }}>
+          <p style={{ fontFamily: 'var(--font-dm-sans)', fontSize: '0.9rem', lineHeight: 1.8, color: 'rgba(245,244,240,0.55)', marginBottom: 48, maxWidth: 480 }}>
             {content.body}
           </p>
 
@@ -86,14 +67,7 @@ export default function AboutSection({ content }: Props) {
                   <span className="about-stat-number">{value}</span>
                   <span className="about-stat-suffix">{suffix}</span>
                 </div>
-                <p style={{
-                  fontFamily: 'var(--font-dm-sans)',
-                  fontSize: '0.65rem',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(245,244,240,0.38)',
-                  marginTop: 8,
-                }}>
+                <p style={{ fontFamily: 'var(--font-dm-sans)', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,244,240,0.38)', marginTop: 8 }}>
                   {label}
                 </p>
               </div>
@@ -102,39 +76,15 @@ export default function AboutSection({ content }: Props) {
         </div>
 
         {/* Right visual panel */}
-        <div style={{
-          position: 'relative',
-          background: 'linear-gradient(135deg, #0d1f3c 0%, #14366D 50%, #0A0A0A 100%)',
-          borderRadius: 2,
-          padding: '60px 40px',
-          minHeight: 420,
-          overflow: 'hidden',
-        }}>
-          {/* Faint year watermark */}
-          <span style={{
-            position: 'absolute',
-            bottom: -20,
-            right: -10,
-            fontFamily: 'var(--font-cormorant)',
-            fontSize: '180px',
-            fontWeight: 300,
-            color: 'rgba(69,105,173,0.06)',
-            lineHeight: 1,
-            userSelect: 'none',
-            pointerEvents: 'none',
-          }}>
+        <div style={{ position: 'relative', background: 'linear-gradient(135deg, #0d1f3c 0%, #14366D 50%, #0A0A0A 100%)', borderRadius: 2, padding: '60px 40px', minHeight: 420, overflow: 'hidden' }}>
+          <span style={{ position: 'absolute', bottom: -20, right: -10, fontFamily: 'var(--font-cormorant)', fontSize: '180px', fontWeight: 300, color: 'rgba(69,105,173,0.06)', lineHeight: 1, userSelect: 'none', pointerEvents: 'none' }}>
             24
           </span>
 
-          {/* Panel image or SVG fallback */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1, height: '100%', marginBottom: 40 }}>
             {content.panel_image ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={content.panel_image}
-                alt="About panel"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0, opacity: 0.7 }}
-              />
+              <img src={content.panel_image} alt="About panel" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0, opacity: 0.7 }} />
             ) : (
               <svg viewBox="0 0 200 220" width="180" height="200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 {ORCA_SVG_PATHS.map((d, i) => (
@@ -146,16 +96,8 @@ export default function AboutSection({ content }: Props) {
             )}
           </div>
 
-          {/* Bottom tag */}
           <div style={{ position: 'absolute', bottom: 32, left: 32, zIndex: 1 }}>
-            <p style={{
-              fontFamily: 'var(--font-dm-sans)',
-              fontSize: '0.6rem',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,244,240,0.4)',
-              lineHeight: 1.6,
-            }}>
+            <p style={{ fontFamily: 'var(--font-dm-sans)', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(245,244,240,0.4)', lineHeight: 1.6 }}>
               {content.tagline_title}
               <br />
               <span style={{ color: '#4569AD' }}>{content.tagline_subtitle}</span>

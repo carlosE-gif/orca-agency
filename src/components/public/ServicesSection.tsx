@@ -137,11 +137,21 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
   return (
     <section
       id="services"
-      className="section-pad-t"
-      style={{ borderTop: '1px solid rgba(245,244,240,0.08)' }}
+      style={{
+        padding: '160px 0 0',
+        borderTop: '1px solid rgba(245,244,240,0.08)',
+      }}
     >
       {/* Section header */}
-      <div className="services-header">
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 80,
+          padding: '0 60px 80px',
+          alignItems: 'end',
+        }}
+      >
         <h2
           style={{
             fontFamily: 'var(--font-cormorant)',
@@ -190,7 +200,14 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
           </p>
         </div>
       ) : (
-        <div className="three-col-grid">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '1px',
+            background: 'rgba(245,244,240,0.08)',
+          }}
+        >
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}

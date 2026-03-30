@@ -46,6 +46,29 @@ export default function HeroSection() {
   return (
     <>
       <style>{`
+        @keyframes heroOrb1 {
+          0%   { transform: translate(0, 0) scale(1); opacity: .45; }
+          25%  { transform: translate(80px, -60px) scale(1.2); opacity: .65; }
+          50%  { transform: translate(140px, 40px) scale(1.05); opacity: .45; }
+          75%  { transform: translate(40px, 100px) scale(1.25); opacity: .6; }
+          100% { transform: translate(0, 0) scale(1); opacity: .45; }
+        }
+        @keyframes heroOrb2 {
+          0%   { transform: translate(0, 0) scale(1); opacity: .3; }
+          33%  { transform: translate(-90px, -70px) scale(1.15); opacity: .55; }
+          66%  { transform: translate(60px, -120px) scale(0.9); opacity: .25; }
+          100% { transform: translate(0, 0) scale(1); opacity: .3; }
+        }
+        @keyframes heroOrb3 {
+          0%   { transform: translate(0, 0) scale(1); opacity: .25; }
+          20%  { transform: translate(-60px, 80px) scale(1.1); opacity: .45; }
+          50%  { transform: translate(80px, 140px) scale(1.2); opacity: .35; }
+          80%  { transform: translate(-40px, -60px) scale(0.9); opacity: .3; }
+          100% { transform: translate(0, 0) scale(1); opacity: .25; }
+        }
+        .hero-orb1 { animation: heroOrb1 16s cubic-bezier(0.4,0,0.2,1) infinite; }
+        .hero-orb2 { animation: heroOrb2 22s cubic-bezier(0.4,0,0.2,1) infinite; }
+        .hero-orb3 { animation: heroOrb3 28s cubic-bezier(0.4,0,0.2,1) infinite; animation-delay: -6s; }
         @keyframes heroLineExpand {
           from { transform: scaleX(0); }
           to { transform: scaleX(1); }
@@ -169,8 +192,8 @@ export default function HeroSection() {
           height: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(100px,10vw,100px) clamp(24px,5vw,60px) clamp(48px,6vw,80px)',
+          justifyContent: 'center',
+          padding: 'clamp(80px,10vw,100px) clamp(24px,5vw,60px)',
           overflow: 'hidden',
           background: `
             radial-gradient(ellipse 80% 60% at 20% 80%, rgba(20,54,109,0.35) 0%, transparent 60%),
@@ -189,6 +212,13 @@ export default function HeroSection() {
             pointerEvents: 'none',
           }}
         />
+
+        {/* Moving blue orbs */}
+        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+          <div className="hero-orb1" style={{ position: 'absolute', top: '-15%', left: '-10%', width: '55vw', height: '55vw', borderRadius: '50%', background: 'radial-gradient(ellipse at center, rgba(20,54,109,0.55) 0%, transparent 65%)' }} />
+          <div className="hero-orb2" style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '45vw', height: '45vw', borderRadius: '50%', background: 'radial-gradient(ellipse at center, rgba(69,105,173,0.35) 0%, transparent 65%)' }} />
+          <div className="hero-orb3" style={{ position: 'absolute', top: '30%', left: '25%', width: '40vw', height: '40vw', borderRadius: '50%', background: 'radial-gradient(ellipse at center, rgba(14,40,90,0.4) 0%, transparent 65%)' }} />
+        </div>
 
         {/* Animated top line */}
         <div
@@ -324,7 +354,7 @@ export default function HeroSection() {
               letterSpacing: '0.35em',
               textTransform: 'uppercase',
               color: '#4569AD',
-              marginBottom: 32,
+              marginBottom: 40,
             }}
           >
             Middle East Creative Agency · Est. 2024
@@ -334,18 +364,15 @@ export default function HeroSection() {
             className="hero-title"
             style={{
               fontFamily: 'var(--font-cormorant)',
-              fontSize: 'clamp(72px, 10vw, 160px)',
+              fontSize: 'clamp(56px, 7.5vw, 120px)',
               fontWeight: 300,
-              lineHeight: 0.92,
+              lineHeight: 0.9,
               color: '#F5F4F0',
-              margin: '0 0 48px',
+              margin: '0 0 56px',
             }}
           >
-            We don&apos;t follow{' '}
-            <em style={{ color: '#4569AD', fontStyle: 'italic' }}>trends,</em>
-            <br />
-            we create{' '}
-            <em style={{ color: '#4569AD', fontStyle: 'italic' }}>tides.</em>
+            WE CREATE{' '}
+            <em style={{ color: '#4569AD', fontStyle: 'italic' }}>EXPERIENCES.</em>
           </h1>
 
           <div
