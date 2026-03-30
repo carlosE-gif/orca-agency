@@ -14,14 +14,8 @@ export default function Footer() {
 
   return (
     <footer
-      style={{
-        borderTop: '1px solid rgba(245,244,240,0.08)',
-        padding: '48px 60px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: 24,
-      }}
+      className="footer-inner"
+      style={{ borderTop: '1px solid rgba(245,244,240,0.08)' }}
     >
       {/* Logo */}
       <a

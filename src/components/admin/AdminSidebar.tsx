@@ -11,6 +11,7 @@ const TEXT_MUTED = 'rgba(255,255,255,0.5)'
 
 const NAV_LINKS = [
   { label: 'Dashboard', href: '/admin' },
+  { label: 'About', href: '/admin/about' },
   { label: 'Projects', href: '/admin/projects' },
   { label: 'Clients', href: '/admin/clients' },
   { label: 'Services', href: '/admin/services' },

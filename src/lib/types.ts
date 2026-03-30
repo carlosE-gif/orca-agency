@@ -30,6 +30,27 @@ export interface Service {
   display_order: number
 }
 
+export interface AboutContent {
+  id: string
+  subheading: string
+  heading_line1: string
+  heading_line2: string
+  body: string
+  stat1_value: string
+  stat1_suffix: string
+  stat1_label: string
+  stat2_value: string
+  stat2_suffix: string
+  stat2_label: string
+  stat3_value: string
+  stat3_suffix: string
+  stat3_label: string
+  panel_image: string | null
+  tagline_title: string
+  tagline_subtitle: string
+  updated_at: string
+}
+
 export interface ContactSubmission {
   id: string
   name: string | null

@@ -2,7 +2,6 @@
 
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import { createClient } from '@/lib/supabase'
 import type { Project } from '@/lib/types'
 import { Button } from '@/components/ui/button'
@@ -356,7 +355,8 @@ export function ProjectsManager({ initialProjects }: Props) {
               />
               {form.cover_image ? (
                 <div className="relative rounded-lg overflow-hidden" style={{ height: 160, background: '#1a1a1a' }}>
-                  <Image src={form.cover_image} alt="Cover" fill style={{ objectFit: 'cover' }} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={form.cover_image} alt="Cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <button
                     type="button"
                     onClick={() => { updateField('cover_image', ''); if (fileInputRef.current) fileInputRef.current.value = '' }}

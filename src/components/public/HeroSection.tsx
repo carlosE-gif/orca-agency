@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 const NOISE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(#n)' opacity='1'/></svg>`
 const NOISE_URI = `data:image/svg+xml;base64,${typeof window !== 'undefined' ? window.btoa(NOISE_SVG) : Buffer.from(NOISE_SVG).toString('base64')}`
@@ -52,6 +53,30 @@ export default function HeroSection() {
         @keyframes heroFadeUp {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes badgeSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes badgePulse {
+          0%, 100% { opacity: 0.15; transform: scale(1); }
+          50% { opacity: 0.3; transform: scale(1.04); }
+        }
+        @keyframes badgeFadeIn {
+          from { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+          to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        .badge-wrapper {
+          animation: badgeFadeIn 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+          animation-delay: 0.7s;
+          opacity: 0;
+        }
+        .badge-ring-spin {
+          animation: badgeSpin 18s linear infinite;
+          transform-origin: center;
+        }
+        .badge-glow {
+          animation: badgePulse 4s ease-in-out infinite;
         }
         @keyframes scrollLineAnim {
           0% { transform: scaleY(0); transform-origin: top; }
@@ -145,7 +170,7 @@ export default function HeroSection() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-end',
-          padding: '0 60px 80px',
+          padding: 'clamp(100px,10vw,100px) clamp(24px,5vw,60px) clamp(48px,6vw,80px)',
           overflow: 'hidden',
           background: `
             radial-gradient(ellipse 80% 60% at 20% 80%, rgba(20,54,109,0.35) 0%, transparent 60%),
@@ -177,6 +202,69 @@ export default function HeroSection() {
             background: 'rgba(245,244,240,0.15)',
           }}
         />
+
+        {/* Badge logo — center right */}
+        <div
+          className="badge-wrapper hero-badge"
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '72%',
+            transform: 'translate(-50%, -50%)',
+            pointerEvents: 'none',
+            width: 480,
+            height: 480,
+          }}
+        >
+          {/* Outer glow */}
+          <div
+            className="badge-glow"
+            style={{
+              position: 'absolute',
+              inset: -40,
+              borderRadius: '50%',
+              background: 'radial-gradient(ellipse at center, rgba(69,105,173,0.18) 0%, transparent 70%)',
+            }}
+          />
+
+          {/* Spinning dashed ring */}
+          <svg
+            className="badge-ring-spin"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+            viewBox="0 0 480 480"
+            fill="none"
+          >
+            <circle
+              cx="240" cy="240" r="220"
+              stroke="rgba(69,105,173,0.25)"
+              strokeWidth="1"
+              strokeDasharray="6 14"
+              strokeLinecap="round"
+            />
+          </svg>
+
+          {/* Static thin ring */}
+          <svg
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+            viewBox="0 0 480 480"
+            fill="none"
+          >
+            <circle
+              cx="240" cy="240" r="196"
+              stroke="rgba(245,244,240,0.06)"
+              strokeWidth="1"
+            />
+          </svg>
+
+          {/* The badge image */}
+          <Image
+            src="/logo-badge.png"
+            alt=""
+            width={480}
+            height={480}
+            style={{ objectFit: 'contain', opacity: 0.92, position: 'relative', zIndex: 1 }}
+          />
+        </div>
 
         {/* Scroll indicator */}
         <div

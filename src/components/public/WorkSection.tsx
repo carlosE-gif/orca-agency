@@ -191,8 +191,8 @@ export default function WorkSection({ projects }: WorkSectionProps) {
   return (
     <section
       id="work"
+      className="section-pad"
       style={{
-        padding: '160px 60px',
         borderTop: '1px solid rgba(245,244,240,0.08)',
       }}
     >

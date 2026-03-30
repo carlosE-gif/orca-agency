@@ -124,12 +124,9 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
+      className="section-pad two-col-grid"
       style={{
-        padding: '160px 60px',
         borderTop: '1px solid rgba(245,244,240,0.08)',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '80px',
         alignItems: 'start',
       }}
     >
